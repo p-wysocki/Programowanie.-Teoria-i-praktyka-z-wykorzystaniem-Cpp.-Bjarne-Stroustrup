@@ -1,1 +1,2 @@
-# Programowanie.-Teoria-i-praktyka-z-wykorzystaniem-Cpp.-Bjarne-Stroustrup
+## Programowanie. Teoria i praktyka z wykorzystaniem C++
+#-Bjarne-Stroustrup
