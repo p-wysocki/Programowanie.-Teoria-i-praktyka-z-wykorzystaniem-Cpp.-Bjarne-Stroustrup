@@ -6,5 +6,3 @@ int main()
     keep_window_open();
     return 0;
 }
-
-
