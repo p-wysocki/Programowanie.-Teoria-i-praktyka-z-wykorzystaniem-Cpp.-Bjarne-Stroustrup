@@ -1,0 +1,8 @@
+﻿  Source.cpp
+C:\Users\PC\Desktop\Nauka C++\Programowanie.-Teoria-i-praktyka-z-wykorzystaniem-Cpp.-Bjarne-Stroustrup\4. Wykonywanie obliczeń\Project3_mainfile\Project3_mainfile\Source.cpp(51,17): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+C:\Users\PC\Desktop\Nauka C++\Programowanie.-Teoria-i-praktyka-z-wykorzystaniem-Cpp.-Bjarne-Stroustrup\4. Wykonywanie obliczeń\Project3_mainfile\Project3_mainfile\Source.cpp(52,17): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+C:\Users\PC\Desktop\Nauka C++\Programowanie.-Teoria-i-praktyka-z-wykorzystaniem-Cpp.-Bjarne-Stroustrup\4. Wykonywanie obliczeń\Project3_mainfile\Project3_mainfile\Source.cpp(58,17): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+C:\Users\PC\Desktop\Nauka C++\Programowanie.-Teoria-i-praktyka-z-wykorzystaniem-Cpp.-Bjarne-Stroustrup\4. Wykonywanie obliczeń\Project3_mainfile\Project3_mainfile\Source.cpp(64,17): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+C:\Users\PC\Desktop\Nauka C++\Programowanie.-Teoria-i-praktyka-z-wykorzystaniem-Cpp.-Bjarne-Stroustrup\4. Wykonywanie obliczeń\Project3_mainfile\Project3_mainfile\Source.cpp(84,21): warning C4018: '<': signed/unsigned mismatch
+C:\Users\PC\Desktop\Nauka C++\Programowanie.-Teoria-i-praktyka-z-wykorzystaniem-Cpp.-Bjarne-Stroustrup\4. Wykonywanie obliczeń\Project3_mainfile\Project3_mainfile\Source.cpp(123,20): warning C4018: '<': signed/unsigned mismatch
+  Project3_mainfile.vcxproj -> C:\Users\PC\Desktop\Nauka C++\Programowanie.-Teoria-i-praktyka-z-wykorzystaniem-Cpp.-Bjarne-Stroustrup\4. Wykonywanie obliczeń\Project3_mainfile\Debug\Project3_mainfile.exe
