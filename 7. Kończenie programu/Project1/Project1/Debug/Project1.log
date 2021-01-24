@@ -1,0 +1,8 @@
+﻿  Source.cpp
+C:\Users\PC\Desktop\Nauka C++\Programowanie.-Teoria-i-praktyka-z-wykorzystaniem-Cpp.-Bjarne-Stroustrup\7. Kończenie programu\Project1\Project1\Source.cpp(108,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\PC\Desktop\Nauka C++\Programowanie.-Teoria-i-praktyka-z-wykorzystaniem-Cpp.-Bjarne-Stroustrup\7. Kończenie programu\Project1\Project1\Source.cpp(114,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\PC\Desktop\Nauka C++\Programowanie.-Teoria-i-praktyka-z-wykorzystaniem-Cpp.-Bjarne-Stroustrup\7. Kończenie programu\Project1\Project1\Source.cpp(123,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\PC\Desktop\Nauka C++\Programowanie.-Teoria-i-praktyka-z-wykorzystaniem-Cpp.-Bjarne-Stroustrup\7. Kończenie programu\Project1\Project1\Source.cpp(111): warning C4715: 'get_value': not all control paths return a value
+C:\Users\PC\Desktop\Nauka C++\Programowanie.-Teoria-i-praktyka-z-wykorzystaniem-Cpp.-Bjarne-Stroustrup\7. Kończenie programu\Project1\Project1\Source.cpp(85): warning C4715: 'Token_stream::get': not all control paths return a value
+C:\Users\PC\Desktop\Nauka C++\Programowanie.-Teoria-i-praktyka-z-wykorzystaniem-Cpp.-Bjarne-Stroustrup\7. Kończenie programu\Project1\Project1\Source.cpp(175): warning C4715: 'primary': not all control paths return a value
+  Project1.vcxproj -> C:\Users\PC\Desktop\Nauka C++\Programowanie.-Teoria-i-praktyka-z-wykorzystaniem-Cpp.-Bjarne-Stroustrup\7. Kończenie programu\Project1\Debug\Project1.exe
