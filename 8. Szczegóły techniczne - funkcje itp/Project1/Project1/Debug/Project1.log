@@ -1,6 +1,4 @@
 ﻿  use.cpp
-my.obj : error LNK2001: unresolved external symbol "int X::var" (?var@X@@3HA)
-use.obj : error LNK2001: unresolved external symbol "int X::var" (?var@X@@3HA)
-my.obj : error LNK2001: unresolved external symbol "int Y::var" (?var@Y@@3HA)
-my.obj : error LNK2001: unresolved external symbol "int Z::var" (?var@Z@@3HA)
-C:\Users\PC\Desktop\Nauka C++\Programowanie.-Teoria-i-praktyka-z-wykorzystaniem-Cpp.-Bjarne-Stroustrup\8. Szczegóły techniczne - funkcje itp\Project1\Debug\Project1.exe : fatal error LNK1120: 3 unresolved externals
+C:\Users\PC\Desktop\Nauka C++\Programowanie.-Teoria-i-praktyka-z-wykorzystaniem-Cpp.-Bjarne-Stroustrup\8. Szczegóły techniczne - funkcje itp\Project1\Project1\use.cpp(47,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\PC\Desktop\Nauka C++\Programowanie.-Teoria-i-praktyka-z-wykorzystaniem-Cpp.-Bjarne-Stroustrup\8. Szczegóły techniczne - funkcje itp\Project1\Project1\use.cpp(74,22): warning C4018: '<': signed/unsigned mismatch
+  Project1.vcxproj -> C:\Users\PC\Desktop\Nauka C++\Programowanie.-Teoria-i-praktyka-z-wykorzystaniem-Cpp.-Bjarne-Stroustrup\8. Szczegóły techniczne - funkcje itp\Project1\Debug\Project1.exe

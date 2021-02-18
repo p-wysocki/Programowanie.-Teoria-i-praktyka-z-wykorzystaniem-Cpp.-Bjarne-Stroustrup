@@ -2,7 +2,7 @@
 // ex1
 extern int foo;
 void print_foo();
-//void print(int);
+void print(int);
 
 // ex2
 void ex2_swap_v(int, int);
