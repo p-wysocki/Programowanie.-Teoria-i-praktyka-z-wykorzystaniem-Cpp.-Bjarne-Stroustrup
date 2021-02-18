@@ -94,6 +94,16 @@ void ex5(int x, int y, vector<int>& v, int n, int iter_number = 1)
 	}
 }
 
+vector<int> ex6(const vector<string> texts)
+{
+	vector<int> text_size;
+	for (int i = 0; i < texts.size(); ++i)
+	{
+		text_size.push_back(texts[i].length());
+	}
+	return text_size;
+}
+
 int main()
 {
 	//ex1();
@@ -108,6 +118,13 @@ int main()
 	//vector<int> fibonacci_sequence;
 	//int n = 5; // amount of numbers to display
 	//ex5(x, y, fibonacci_sequence, n);
+
+	vector<string> texts{ "rwaz", "dwa", "trzy", "dfawfdaw" };
+	vector<int> ex6_output = ex6(texts);
+	for (int i = 0; i < ex6_output.size(); ++i)
+	{
+		cout << ex6_output[i] << endl;
+	}
 
 	// to keep the window open
 	char cc;
