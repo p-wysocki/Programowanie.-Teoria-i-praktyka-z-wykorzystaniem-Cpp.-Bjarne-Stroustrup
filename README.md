@@ -1,5 +1,6 @@
 # Programowanie. Teoria i praktyka z wykorzystaniem C++
-## autor: Bjarne Stroustrup, kreator języka C++
+## autor: Bjarne Stroustrup
+## link do opisu książki: https://helion.pl/ksiazki/programowanie-teoria-i-praktyka-z-wykorzystaniem-c-wydanie-iii-bjarne-stroustrup,pcppt3.htm#format/d
 
 W repozytorium dla każdego z rozdziałów znajduje się oddzielny folder nazwany tematem rozdziału oraz jego numerem. W folderach znajdują się wykonane przeze mnie ćwiczenia z książki.
 
