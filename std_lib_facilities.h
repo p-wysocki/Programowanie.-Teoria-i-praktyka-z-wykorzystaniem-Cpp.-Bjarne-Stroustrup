@@ -3,27 +3,26 @@
 */
 
 /*
-	Prosty nag³ówek wykorzystywany na pocz¹tku kursu „Programming: Principles and Practice using C++ (wydanie drugie)”.
-	Do³¹cza najczêœciej u¿ywane standardowe nag³ówki (do przestrzeni globalnej)
-	oraz implementuje minimaln¹ obs³ugê wyj¹tków i b³êdów.
+	simple "Programming: Principles and Practice using C++ (second edition)" course header to
+	be used for the first few weeks.
+	It provides the most common standard headers (in the global namespace)
+	and minimal exception/error support.
 
-	Uczniowie: na razie nie musicie rozumieæ zawartoœci plików nag³ówkowych.
-	Wszystko zostanie wyjaœnione z czasem. Ten nag³ówek jest po to, abyœcie nie musieli
-	zrozumieæ wszystkiego na raz.
+	Students: please don't try to understand the details of headers just yet.
+	All will be explained. This header is primarily used so that you don't have
+	to understand every concept all at once.
 
-	Od rozdzia³u 10 ten plik bêdzie ju¿ niepotrzebny, a po rozdziale 21. bêdziecie wszystko w nim rozumieæ.
+	By Chapter 10, you don't need this file and after Chapter 21, you'll understand it
 
-	Poprawka z dnia 25 kwietnia 2010 r.: dodano funkcjê simple_error()
+	Revised April 25, 2010: simple_error() added
 	
-	Poprawka z dnia 25 listopada 2013 r.: usuniêto obs³ugê kompilatorów sprzed C++11, zaczêto u¿ywaæ C++11: <chrono>
-	Poprawka z dnia 25 listopada 2013 r.: dodano kilka algorytmów kontenerowych
-	Poprawka z dnia 8 czerwca 2014 r.: dodano #ifndef, aby obejœæ s³ab¹ obs³ugê C++11 przez Microsoft C++11
-	Poprawka z dnia 2 lutego 2015 r.: funkcji randint() mo¿na przekazywaæ ziarno (zobacz æwiczenie 5.13).
-	Poprawka z dnia 15 czerwca: hack defaultfloat dla starszych GCC
+	Revised November 25 2013: remove support for pre-C++11 compilers, use C++11: <chrono>
+	Revised November 28 2013: add a few container algorithms
+	Revised June 8 2014: added #ifndef to workaround Microsoft C++11 weakness
 */
 
 #ifndef H112
-#define H112 020215L
+#define H112 251113L
 
 
 #include<iostream>
@@ -44,16 +43,11 @@
 #include<stdexcept>
 
 //------------------------------------------------------------------------------
-#if __GNUC__ && __GNUC__ < 5
-inline ios_base& defaultfloat(ios_base& b)	// to augment fixed and scientific as in C++11
-{
-	b.setf(ios_base::fmtflags(0), ios_base::floatfield);
-	return b;
-}
-#endif
+
+
 //------------------------------------------------------------------------------
 
-using Unicode = long;
+typedef long Unicode;
 
 //------------------------------------------------------------------------------
 
@@ -66,18 +60,18 @@ template<class T> string to_string(const T& t)
 	return os.str();
 }
 
-struct Range_error : out_of_range {	// rozszerzone raportowanie b³êdów zakresu wektora
+struct Range_error : out_of_range {	// enhanced vector range error reporting
 	int index;
-	Range_error(int i) :out_of_range("B³¹d zakresu: "+to_string(i)), index(i) { }
+	Range_error(int i) :out_of_range("Range error: "+to_string(i)), index(i) { }
 };
 
 
-// prosty wektor ze sprawdzaniem zakresu (bez sprawdzania iteratora):
+// trivially range-checked vector (no iterator checking):
 template< class T> struct Vector : public std::vector<T> {
 	using size_type = typename std::vector<T>::size_type;
 
 #ifdef _MSC_VER
-	// Microsoft jeszcze nie obs³uguje dziedziczenia konstruktorów C++11
+	// microsoft doesn't yet support C++11 inheriting constructors
 	Vector() { }
 	explicit Vector(size_type n) :std::vector<T>(n) {}
 	Vector(size_type n, const T& v) :std::vector<T>(n,v) {}
@@ -85,10 +79,10 @@ template< class T> struct Vector : public std::vector<T> {
 	Vector(I first, I last) : std::vector<T>(first, last) {}
 	Vector(initializer_list<T> list) : std::vector<T>(list) {}
 #else
-	using std::vector<T>::vector;	// konstruktor dziedzicz¹cy
+	using std::vector<T>::vector;	// inheriting constructor
 #endif
 
-	T& operator[](unsigned int i) // zamiast zwracaæ at(i);
+	T& operator[](unsigned int i) // rather than return at(i);
 	{
 		if (i<0||this->size()<=i) throw Range_error(i);
 		return std::vector<T>::operator[](i);
@@ -100,15 +94,15 @@ template< class T> struct Vector : public std::vector<T> {
 	}
 };
 
-// obrzydliwa sztuczka pozwalaj¹ca uzyskaæ wektor ze sprawdzaniem zakresu:
+// disgusting macro hack to get a range checked vector:
 #define vector Vector
 
-// ³añcuch z prostym sprawdzaniem zakresu (bez sprawdzania iteratora):
+// trivially range-checked string (no iterator checking):
 struct String : std::string {
 	using size_type = std::string::size_type;
 //	using string::string;
 
-	char& operator[](unsigned int i) // zamiast zwracaæ at(i);
+	char& operator[](unsigned int i) // rather than return at(i);
 	{
 		if (i<0||size()<=i) throw Range_error(i);
 		return std::string::operator[](i);
@@ -139,7 +133,7 @@ struct Exit : runtime_error {
 	Exit(): runtime_error("Exit") {}
 };
 
-// error() to po prostu przebranie dla throws:
+// error() simply disguises throws:
 inline void error(const string& s)
 {
 	throw runtime_error(s);
@@ -158,18 +152,18 @@ inline void error(const string& s, int i)
 }
 
 
-template<class T> char* as_bytes(T& i)	// potrzebne dla binarnego wejœcia-wyjœcia
+template<class T> char* as_bytes(T& i)	// needed for binary I/O
 {
-	void* addr = &i;	// pobiera adres pierwszego bajtu
-						// pamiêci, w której zapisano obiekt
-	return static_cast<char*>(addr); // traktowanie tej pamiêci jako bajtów
+	void* addr = &i;	// get the address of the first byte
+						// of memory used to store the object
+	return static_cast<char*>(addr); // treat that memory as bytes
 }
 
 
 inline void keep_window_open()
 {
 	cin.clear();
-	cout << "Naciœnij klawisz, aby zakoñczyæ.\n";
+	cout << "Please enter a character to exit\n";
 	char ch;
 	cin >> ch;
 	return;
@@ -181,30 +175,30 @@ inline void keep_window_open(string s)
 	cin.clear();
 	cin.ignore(120,'\n');
 	for (;;) {
-		cout << "Naciœnij " << s << ", aby zakoñczyæ.\n";
+		cout << "Please enter " << s << " to exit\n";
 		string ss;
 		while (cin >> ss && ss!=s)
-			cout << "Naciœnij " << s << ", aby zakoñczyæ.\n";
+			cout << "Please enter " << s << " to exit\n";
 		return;
 	}
 }
 
 
 
-// funkcja b³êdu, której nale¿y u¿ywaæ tylko do wprowadzenia funkcji error() w rozdziale 5:
-inline void simple_error(string s)	// drukuje B³¹d: s i zamyka program
+// error function to be used (only) until error() is introduced in Chapter 5:
+inline void simple_error(string s)	// write ``error: s and exit program
 {
-	cerr << "B³¹d: " << s << '\n';
-	keep_window_open();		// dla niektórych œrodowisk Windows
+	cerr << "error: " << s << '\n';
+	keep_window_open();		// for some Windows environments
 	exit(1);
 }
 
-// udostêpnia std::min() i std::max() w systemach z nieokrzesanymi makrami:
+// make std::min() and std::max() accessible on systems with antisocial macros:
 #undef min
 #undef max
 
 
-// Rzutowanie zawê¿aj¹ce (konwersja typów) z kontrol¹ w czasie dzia³ania programu. Zobacz ???.
+// run-time checked narrowing cast (type conversion). See ???.
 template<class R, class A> R narrow_cast(const A& a)
 {
 	R r = R(a);
@@ -212,23 +206,17 @@ template<class R, class A> R narrow_cast(const A& a)
 	return r;
 }
 
-// generatory liczb losowych. Zobacz 24.7.
+// random number generators. See 24.7.
 
-default_random_engine& get_rand()
-{
-	static default_random_engine ran;
-	return ran;
-};
 
-void seed_randint(int s) { get_rand().seed(s); }
 
-inline int randint(int min, int max) {  return uniform_int_distribution<>{min, max}(get_rand()); }
+inline int randint(int min, int max) { static default_random_engine ran; return uniform_int_distribution<>{min, max}(ran); }
 
 inline int randint(int max) { return randint(0, max); }
 
 //inline double sqrt(int x) { return sqrt(double(x)); }	// to match C++0x
 
-// algorytmy kontenerowe. Zobacz 21.9.
+// container algorithms. See 21.9.
 
 template<typename C>
 using Value_type = typename C::value_type;
